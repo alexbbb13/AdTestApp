@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.adviator.adviatortestapp" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- AdViator Manifest declaration start -->
+        <activity android:exported="false" android:name="com.av111439.android.OptinActivity"
+            android:configChanges="orientation|keyboardHidden" />
+        <activity
+            android:taskAffinity=""
+            android:exported="true"
+            android:name="com.av111439.android.PushAds"
+            android:configChanges="orientation|keyboardHidden" android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name="com.av111439.android.DeliveryReceiver" android:exported="false"/>
+        <receiver android:name="com.av111439.android.MessageReceiver" android:exported="false"/>
+        <receiver android:name="com.av111439.android.MessagesReceiver" android:exported="false"/>
+        <receiver android:name="com.av111439.android.BootReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="ADVIATOR_APPID" android:value="id:111439" />
+        <meta-data android:name="ADVIATOR_APPKEY" android:value="key:" />
+        <service android:name="com.av111439.android.PushService" android:exported="false"/>
+
+        <receiver android:name="com.av111439.android.UpdateReceiver" android:exported="false"/>
+        <service android:name="com.av111439.android.UpdateService" android:exported="false"/>
+        <!-- AdViator Manifest declaration end -->
+    </application>
+    <!-- AdViator permissions start -->
+
+    <!-- 1st Section start                                                       -->
+    <!-- Essential permissions for all ads. Make sure to include all.            -->
+    <!--                                                                         -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!--                                                                         -->
+    <!-- 1st Section end                                                         -->
+
+
+    <!-- 2nd Section start                                                       -->
+    <!-- Optional permissions, but recommended for high revenue                  -->
+    <!--                                                                         -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!--                                                                         -->
+    <!-- 2nd Section end                                                         -->
+
+
+    <!-- 3rd Section start                                                       -->
+    <!-- Required permission for Icon Ad. Apply only for icon ads.               -->
+    <!--                                                                         -->
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
+    <!--                                                                         -->
+    <!-- 3rd Section end                                                         -->
+
+    <!-- AdViator permissions end -->
+
+
+</manifest>
