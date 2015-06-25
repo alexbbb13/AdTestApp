@@ -26,11 +26,14 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        com.av111439.android.AdService.startAds(getApplicationContext());
+
         tv = (TextView) findViewById(R.id.tvTextView);
         btStartAds = (Button) findViewById(R.id.btStartAds);
         btStartAds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                com.av111439.android.AdService.initialize(getApplicationContext());
                 com.av111439.android.AdService.testStartAds(getApplicationContext());
 
             }

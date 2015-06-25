@@ -28,4 +28,8 @@
         android:layout_alignParentLeft="true"
         android:layout_marginTop="50dp" />
 
+    <com.av111439.android.BannerAdView
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"/>
+
 </RelativeLayout>
