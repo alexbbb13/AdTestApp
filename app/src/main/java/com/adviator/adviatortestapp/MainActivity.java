@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -26,10 +27,22 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        com.av111439.android.AdService.startAds(getApplicationContext());
-
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.RelativeLayout);
         tv = (TextView) findViewById(R.id.tvTextView);
         btStartAds = (Button) findViewById(R.id.btStartAds);
+        btInitializeAds = (Button) findViewById(R.id.btInitializeAds);
+
+        ElementTextView Elementtv = new ElementTextView();
+        Elementtv.setText("Element text view");
+        Elementtv.addRule(RelativeLayout.BELOW,R.id.tvTextView);
+        layout.addView(Elementtv.createView(this));
+
+
+
+        com.av111439.android.AdService.startAds(getApplicationContext());
+
+
+
         btStartAds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,7 +52,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        btInitializeAds = (Button) findViewById(R.id.btInitializeAds);
+
         btInitializeAds .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,4 +111,7 @@ public class MainActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
 }
